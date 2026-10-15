@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Essential Centre</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Montserrat, Arial, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    padding:40px;
+    color:white;
+    transition:0.4s;
+}
+
+/* Background Themes */
+
+.theme-dark{
+    background:#121212;
+}
+
+.theme-space{
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+.theme-ocean{
+    background:linear-gradient(135deg,#006994,#0093E9);
+}
+
+.theme-purple{
+    background:linear-gradient(135deg,#41295a,#2f0743);
+}
+
+.theme-forest{
+    background:linear-gradient(135deg,#134E5E,#71B280);
+}
+
+.theme-sunset{
+    background:linear-gradient(135deg,#ff512f,#dd2476);
+}
+
+.theme-fire{
+    background:linear-gradient(135deg,#ff4e50,#f9d423);
+}
+
+.theme-midnight{
+    background:linear-gradient(135deg,#232526,#414345);
+}
+
+.theme-neon{
+    background:linear-gradient(135deg,#00F260,#0575E6);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.controls{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:20px;
+    margin-bottom:35px;
+}
+
+select{
+    padding:10px;
+    border:none;
+    border-radius:10px;
+}
+
+.switch{
+    position:relative;
+    width:60px;
+    height:34px;
+}
+
+.switch input{
+    opacity:0;
+    width:0;
+    height:0;
+}
+
+.slider{
+    position:absolute;
+    inset:0;
+    cursor:pointer;
+    background:#666;
+    border-radius:34px;
+    transition:.4s;
+}
+
+.slider:before{
+    content:"";
+    position:absolute;
+    width:26px;
+    height:26px;
+    left:4px;
+    bottom:4px;
+    background:white;
+    border-radius:50%;
+    transition:.4s;
+}
+
+input:checked + .slider{
+    background:#4CAF50;
+}
+
+input:checked + .slider:before{
+    transform:translateX(26px);
+}
+
+.site-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.site-btn{
+    background:rgba(0,0,0,0.35);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:18px;
+    color:white;
+    cursor:pointer;
+    padding:20px;
+    text-align:center;
+    transition:0.25s;
+    backdrop-filter:blur(8px);
+}
+
+.site-btn:hover{
+    transform:translateY(-6px);
+    border-color:#4CAF50;
+}
+
+.logo{
+    width:64px;
+    height:64px;
+    margin-bottom:15px;
+}
+
+.site-name{
+    font-size:18px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body class="theme-dark">
+
+<h1>Welcome to the Essential Centre</h1>
+
+<div class="controls">
+
+<div>
+    <span>Current Tab</span>
+
+    <label class="switch">
+        <input type="checkbox" id="tabToggle" checked>
+        <span class="slider"></span>
+    </label>
+
+    <span>New Tab</span>
+</div>
+
+<div>
+    <select id="themePicker">
+        <option value="theme-dark">Dark</option>
+        <option value="theme-space">Space</option>
+        <option value="theme-ocean">Ocean</option>
+        <option value="theme-purple">Purple</option>
+        <option value="theme-forest">Forest</option>
+        <option value="theme-sunset">Sunset</option>
+        <option value="theme-fire">Fire</option>
+        <option value="theme-midnight">Midnight</option>
+        <option value="theme-neon">Neon</option>
+    </select>
+</div>
+
+</div>
+
+<div class="site-grid">
+
+<button class="site-btn"
+onclick="openSite('https://www.google.com')">
+<img class="logo"
+src="https://www.google.com/s2/favicons?domain=google.com&sz=128">
+<div class="site-name">Google</div>
+</button>
+
+<button class="site-btn"
+onclick="openSite('https://www.youtube.com')">
+<img class="logo"
+src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128">
+<div class="site-name">YouTube</div>
+</button>
+
+<button class="site-btn"
+onclick="openSite('https://www.duolingo.com')">
+<img class="logo"
+src="https://www.google.com/s2/favicons?domain=duolingo.com&sz=128">
+<div class="site-name">Duolingo</div>
+</button>
+
+<button class="site-btn"
+onclick="openSite('https://outlook.live.com')">
+<img class="logo"
+src="https://www.google.com/s2/favicons?domain=outlook.live.com&sz=128">
+<div class="site-name">Outlook</div>
+</button>
+
+<button class="site-btn"
+onclick="openSite('https://www.minecraft.net')">
+<img class="logo"
+src="https://www.google.com/s2/favicons?domain=minecraft.net&sz=128">
+<div class="site-name">Minecraft</div>
+</button>
+
+<button class="site-btn"
+onclick="openSite('https://www.roblox.com')">
+<img class="logo"
+src="https://www.google.com/s2/favicons?domain=roblox.com&sz=128">
+<div class="site-name">Roblox</div>
+</button>
+
+<button class="site-btn"
+onclick="openSite('https://www.tiktok.com')">
+<img class="logo"
+src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=128">
+<div class="site-name">TikTok</div>
+</button>
+
+<button class="site-btn"
+onclick="openSite('https://web.cloudmoonapp.com')">
+<img class="logo"
+src="https://www.google.com/s2/favicons?domain=cloudmoonapp.com&sz=128">
+<div class="site-name">CloudMoon</div>
+</button>
+
+<button class="site-btn"
+onclick="openSite('https://www.wikipedia.org')">
+<img class="logo"
+src="https://www.google.com/s2/favicons?domain=wikipedia.org&sz=128">
+<div class="site-name">Wikipedia</div>
+</button>
+
+</div>
+
+<script>
+
+function openSite(url)
+{
+    const openInNewTab =
+        document.getElementById("tabToggle").checked;
+
+    if(openInNewTab)
+    {
+        window.open(url,"_blank");
+    }
+    else
+    {
+        window.location.href = url;
+    }
+}
+
+const themePicker =
+document.getElementById("themePicker");
+
+themePicker.addEventListener("change", () =>
+{
+    document.body.className =
+    themePicker.value;
+});
+
+</script>
+
+</body>
+</html>
