@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Essential Centre</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Montserrat,Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    padding:40px;
+    color:white;
+    transition:.4s;
+}
+
+/* THEMES */
+
+.theme-dark{
+    background:#121212;
+}
+
+.theme-space{
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+.theme-ocean{
+    background:linear-gradient(135deg,#006994,#0093E9);
+}
+
+.theme-purple{
+    background:linear-gradient(135deg,#41295a,#2f0743);
+}
+
+.theme-forest{
+    background:linear-gradient(135deg,#134E5E,#71B280);
+}
+
+.theme-sunset{
+    background:linear-gradient(135deg,#ff512f,#dd2476);
+}
+
+.theme-fire{
+    background:linear-gradient(135deg,#ff4e50,#f9d423);
+}
+
+.theme-midnight{
+    background:linear-gradient(135deg,#232526,#414345);
+}
+
+.theme-neon{
+    background:linear-gradient(135deg,#00F260,#0575E6);
+}
+
+.theme-galaxy{
+    background:linear-gradient(135deg,#20002c,#cbb4d4);
+}
+
+.theme-ice{
+    background:linear-gradient(135deg,#83a4d4,#b6fbff);
+}
+
+/* HEADER */
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:2.2rem;
+}
+
+.controls{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+}
+
+/* TAB SWITCH */
+
+.tab-setting{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.switch{
+    position:relative;
+    display:inline-block;
+    width:60px;
+    height:34px;
+}
+
+.switch input{
+    opacity:0;
+    width:0;
+    height:0;
+}
+
+.slider{
+    position:absolute;
+    inset:0;
+    cursor:pointer;
+    background:#444;
+    border-radius:999px;
+    transition:.3s;
+}
+
+.slider:before{
+    content:"";
+    position:absolute;
+    left:4px;
+    top:4px;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:white;
+    transition:.3s;
+}
+
+input:checked + .slider{
+    background:#4CAF50;
+    box-shadow:0 0 15px rgba(76,175,80,.5);
+}
+
+input:checked + .slider:before{
+    transform:translateX(26px);
+}
+
+#tabModeText{
+    min-width:90px;
+    font-weight:600;
+}
+
+/* THEME SELECT */
+
+select{
+    padding:10px 14px;
+    border:none;
+    border-radius:10px;
+    background:white;
+    cursor:pointer;
+    font-size:14px;
+}
+
+/* GRID */
+
+.site-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+/* CARDS */
+
+.site-btn{
+    background:rgba(0,0,0,.25);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:18px;
+
+    padding:25px;
+    color:white;
+
+    cursor:pointer;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    transition:.25s;
+}
+
+.site-btn:hover{
+    transform:translateY(-6px);
+    border-color:#4CAF50;
+}
+
+.logo{
+    width:64px;
+    height:64px;
+    margin-bottom:15px;
+}
+
+.site-name{
+    font-size:18px;
+    font-weight:600;
+}
+
+footer{
+    text-align:center;
+    margin-top:40px;
+    opacity:.75;
+    font-size:14px;
+}
+
+@media(max-width:600px){
+
+    body{
+        padding:20px;
+    }
+
+    h1{
+        font-size:1.6rem;
+    }
+}
+
+</style>
+</head>
+
+<body class="theme-dark">
+
+<h1>Welcome to the Essential Centre</h1>
+
+<div class="controls">
+
+    <div class="tab-setting">
+
+        <label class="switch">
+            <input type="checkbox" id="tabToggle" checked>
+            <span class="slider"></span>
+        </label>
+
+        <span id="tabModeText">New Tab</span>
+
+    </div>
+
+    <select id="themePicker">
+
+        <option value="theme-dark">Dark</option>
+        <option value="theme-space">Space</option>
+        <option value="theme-ocean">Ocean</option>
+        <option value="theme-purple">Purple</option>
+        <option value="theme-forest">Forest</option>
+        <option value="theme-sunset">Sunset</option>
+        <option value="theme-fire">Fire</option>
+        <option value="theme-midnight">Midnight</option>
+        <option value="theme-neon">Neon</option>
+        <option value="theme-galaxy">Galaxy</option>
+        <option value="theme-ice">Ice</option>
+
+    </select>
+
+</div>
+
+<div class="site-grid">
+
+    <button class="site-btn"
+    onclick="openSite('https://www.google.com')">
+        <img class="logo"
+        src="https://www.google.com/s2/favicons?domain=google.com&sz=128">
+        <div class="site-name">Google</div>
+    </button>
+
+    <button class="site-btn"
+    onclick="openSite('https://www.youtube.com')">
+        <img class="logo"
+        src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128">
+        <div class="site-name">YouTube</div>
+    </button>
+
+    <button class="site-btn"
+    onclick="openSite('https://www.duolingo.com')">
+        <img class="logo"
+        src="https://www.google.com/s2/favicons?domain=duolingo.com&sz=128">
+        <div class="site-name">Duolingo</div>
+    </button>
+
+    <button class="site-btn"
+    onclick="openSite('https://outlook.live.com')">
+        <img class="logo"
+        src="https://www.google.com/s2/favicons?domain=outlook.live.com&sz=128">
+        <div class="site-name">Outlook</div>
+    </button>
+
+    <button class="site-btn"
+    onclick="openSite('https://www.minecraft.net')">
+        <img class="logo"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUKuOquHDeUgrLcIetSA4g-uf7BslxaoUidDwDWy3qwg&s=10">
+        <div class="site-name">Minecraft</div>
+    </button>
+
+    <button class="site-btn"
+    onclick="openSite('https://www.roblox.com')">
+        <img class="logo"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAPFBMVEVHcEwzX/8zX/8zX/8zX/8zX/8zX/8kV/8uXP+gsP9Rc/8VUP/////x8//Ayv+Emf/m6v+zwP9wi//Y3v/PyHIFAAAAB3RSTlMAS6/d8v/IpmlpugAAANJJREFUeAF8klUCwzAIQGMsAtXc/64boyH191N5RBDzwzof4EDwzpo/H7jl8+DUWhBiTGdrjdtczgVjPEhnvLwgEQ3jBLjbwBu5ZyokzMuKLSCYtit1Kp/AfzeJlY7kuJP0LNN6liWpjAsxyzKQMCCoxJkYQAQJG/cX0nAUOXUZJ9mVpWwM0OUokreVUmCXqPdYFgmLKrV2yppUau0UhGdZVbLFkuupdkxrWURcl7nXjgnS7BYA0zj0I72MiRL5hLar0wFTkk6SfR/N96H+Dk92AAClWBcZ+8Pc/wAAAABJRU5ErkJggg==">
+        <div class="site-name">Roblox</div>
+    </button>
+
+    <button class="site-btn"
+    onclick="openSite('https://www.tiktok.com')">
+        <img class="logo"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAw1BMVEUAAAAAAAAFT1IAQUNBub6u5eexxcpyQ0wIAABaxsv5////9/nGj5oyAAD////84eeEYmvm4uN4f4A5P0MAFBXx+vu019khAAD60tr37vDlmqpXAAsALzAKc3gpo6hjpqr/6O3idYqcbHTSrLP6iJ9rABOc5Ofi+vvJYnXLbn8/AAI9HyWWIDhRz9TH9PffY3oDAAC99vjhSGe7KEenACiF4+f/1961PVaB09bFkZswjJGwuLr//f7xqbYYHh/9tsTiL1Yh8R0/AAAAAXRSTlP+GuMHfQAAANJJREFUeAG90kUCg1AMBNDiPtTd3d2V+5+quMOS2b6vSXI5IjnZIElSyUgzLMcnoSBKspKMUPMpiEKxVE5EVKr5WgTLBkr1BtBsBbHd6fZKOvYHw1F9PAkgSU9njXlNx8Vyxa2XfmxvtoC0M1GH/d6P3QPU8fFkY/Ar7Q0ag3ONIOKQvOB60i0WqSnUG6FnI6rzMJbvkB76zo5+wk0JIf8EGq9ndzN7f9bRrlQBcTYTcT22iAh+X9Ib7/dPm8Q1u5Zvfpq7c4uIQ56otVrLjEYzJX+4mxcG80U+CwAAAABJRU5ErkJggg==">
+        <div class="site-name">TikTok</div>
+    </button>
+
+    <button class="site-btn"
+    onclick="openSite('https://web.cloudmoonapp.com')">
+        <img class="logo"
+        src="https://www.google.com/s2/favicons?domain=cloudmoonapp.com&sz=128">
+        <div class="site-name">CloudMoon</div>
+    </button>
+
+    <button class="site-btn"
+    onclick="openSite('https://www.wikipedia.org')">
+        <img class="logo"
+        src="https://www.google.com/s2/favicons?domain=wikipedia.org&sz=128">
+        <div class="site-name">Wikipedia</div>
+    </button>
+
+    <button class="site-btn"
+    onclick="openSite('https://mail.google.com/mail/')">
+        <img class="logo"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACIUlEQVR4Ae2XA8zdYBiFZ9vBbNu2bdu2bQSzbdtmNEWzF4zRvLXf2U62/ul901vOW5Ln4nw4z2XbSFX71fql/Bf4vQTQcfUEtJlzSDWfNP57F6ltCSaoE9EPqEvRQvY2lyuCtvOhmk+GajQEqlulVEGLuYe+KOUHbI8HnIgGXIoK/WYCPUSAr9xKQK/bGXrtMiX8lnOtmpgWalEKSAHcTjAmQoBve1iB6o2h1SvV12s51+h9sqpwAo9vZT3oXqBiJV2rVny923LO1Vrmg2sBrXypXSy2FShfGlqFMlecyjlHq1sETgJlznXeHyLAApbbChA+rlAqqSxm9nWsBOwEblzIjBznusBSgItZbCdgYP5y8rGR2wgY5dYCpg1YHE5A0uQbsBPAglhYfagCIp3tYiMgNmGxFLDBRiANBhyoH1JOEh7rsUsKQMIvlF617tMgAnylLE9xop0ZdwLMOU4JHwL3uZZF8Y92gsSTANEqljrkVoBzjXUsinNwGCSuBcRPbaKTAOeY10TfPX9XzL0zIWHuWYDIb72giZzPomg7V0DiWUBIZJJzmVnNjbr5yK5IW/dAwtyXgPzbJTKXAjE2nIEkuIBLkq6+uivVyuuQMP8pAmmX3bMUYP5TBArMf70r18KXkDD/aQLF53yC5KcJFJqOA0VnARLmJoHSwy0F+I/2gwQKz8DQCAFDgoVmjGN+EApMRTFKmPmSjfh/ZWTwX+Azqs2v1Z3jl+0AAAAASUVORK5CYII=">
+        <div class="site-name">Gmail</div>
+    </button>
+
+ <button class="site-btn"
+    onclick="openSite('https://open.spotify.com')">
+        <img class="logo"
+        src="https://www.google.com/s2/favicons?domain=spotify.com&sz=128">
+        <div class="site-name">Spotify</div>
+    </button>
+</div>
+
+<footer>
+    CaptCreeper Studio©. All rights reserved.
+</footer>
+
+<script>
+
+const tabToggle =
+document.getElementById("tabToggle");
+
+const tabModeText =
+document.getElementById("tabModeText");
+
+function updateTabMode()
+{
+    tabModeText.textContent =
+    tabToggle.checked
+        ? "New Page"
+        : "Same Page";
+}
+
+function openSite(url)
+{
+    if(tabToggle.checked)
+    {
+        window.open(url,"_blank");
+    }
+    else
+    {
+        window.location.href = url;
+    }
+}
+
+tabToggle.addEventListener(
+    "change",
+    updateTabMode
+);
+
+updateTabMode();
+
+/* Theme Picker */
+
+const themePicker =
+document.getElementById("themePicker");
+
+themePicker.addEventListener("change", () =>
+{
+    document.body.className =
+    themePicker.value;
+});
+
+</script>
+
+</body>
+</html>
